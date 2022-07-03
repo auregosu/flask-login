@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, make_response, redirect, url_for
 from flask_login import login_required
 from ..model import user
+
 User = user.User
 
 # Blueprint Configuration
