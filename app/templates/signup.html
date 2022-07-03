@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block head %}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<title> Mortis: Sign up </title>
+{% endblock %}
+
+{% block body %}
+<div class="card mx-auto my-5 text-white" style="width: 27rem; background-color: #333333;">
+    <div class="card-body" >
+        <h5 class="card-title"> Sign up </h5>
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <form action="#" method="POST" action="signup">
+            {{ form.csrf_token }}
+            <fieldset class="form-field my-4">
+                {{ form.username(class_='form-control', style_="background-color: black; color: white;", type_="text", placeholder_="Username")}}
+            </fieldset>
+            <fieldset class="form-field my-4">
+                {{ form.email(class_='form-control', style_="background-color: black; color: white;", type_="email", placeholder_="Email")}}
+            </fieldset>
+            <fieldset class="form-field my-4">
+                {{ form.password(class_='form-control', style_="background-color: black; color: red;", type_="password", placeholder_="Password")}}
+            </fieldset>
+            <fieldset class="form-field my-4">
+                {{ form.submit(class_="btn btn-danger") }}
+                <a href="/" class="card-link mx-2" style="color: red;"> Log in </a>
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock %}

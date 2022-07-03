@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Mortis</title>
+{% endblock %}
+
+{% block body %}
+<div
+  class="card mx-auto my-5 text-white"
+  style="width: 27rem; background-color: #333333"
+>
+  <div class="card-body">
+    <h5 class="card-title">Log in</h5>
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+    <form action="#" method="POST" action="login">
+      {{ form.csrf_token }}
+      <fieldset class="form-field my-4">
+        {{ form.username(class_='form-control', style_="background-color: black;
+        color: white;", type_="text", placeholder_="Username")}} {% if
+        form.username.errors %}
+        <ul class="errors">
+          {% for error in form.username.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </fieldset>
+      <fieldset class="form-field my-4">
+        {{ form.password(class_='form-control', style_="background-color: black;
+        color: red;", type_="password", placeholder_="Password")}} {% if
+        form.password.errors %}
+        <ul class="errors">
+          {% for error in form.password.errors %}
+          <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </fieldset>
+      <fieldset class="form-field">
+        {{ form.submit(class_="btn btn-danger") }}
+        <a href="signup" class="card-link mx-2" style="color: red"> Sign up </a>
+      </fieldset>
+    </form>
+  </div>
+</div>
+{% endblock %}
